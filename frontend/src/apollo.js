@@ -6,13 +6,13 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri:
+    import.meta.env.VITE_GRAPHQL_ENDPOINT ||
+    "https://linkedin-cjvo.onrender.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("token");
-
-  console.log("TOKEN:", token); // DEBUG
 
   return {
     headers: {
