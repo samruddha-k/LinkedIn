@@ -8,7 +8,7 @@ import { setContext } from "@apollo/client/link/context";
 const httpLink = createHttpLink({
   uri:
     import.meta.env.VITE_GRAPHQL_ENDPOINT ||
-    "https://linkedin-cjvo.onrender.com/graphql",
+    "https://linkedin-cjvo.onrender.com",
 });
 
 const authLink = setContext((_, { headers }) => {
