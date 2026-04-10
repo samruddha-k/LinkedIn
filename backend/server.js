@@ -19,7 +19,21 @@ const driver = neo4j.driver(
 
 /* ---------------- APP ---------------- */
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: [
+    "https://linked-in-kappa-six.vercel.app",
+    "https://linkedin-cjvo.onrender.com",
+    "http://localhost:3000",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("/graphql", cors(corsOptions));
 app.use(express.json());
 
 /* ---------------- GRAPHQL SCHEMA ---------------- */
